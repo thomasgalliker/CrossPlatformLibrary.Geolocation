@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CrossPlatformLibrary">
-      <HintPath>..\..\packages\CrossPlatformLibrary.1.0.6-alpha\lib\portable-net45+wp8+MonoAndroid+MonoTouch\CrossPlatformLibrary.dll</HintPath>
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.6-alpha\lib\portable-net45+wp8+MonoAndroid+MonoTouch\CrossPlatformLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
