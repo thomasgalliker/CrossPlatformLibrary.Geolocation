@@ -99,12 +99,12 @@ namespace CrossPlatformLibrary.Geolocation
             {
                 var status = CLLocationManager.Status;
 
-                ////if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-                ////{
-                ////    return status == CLAuthorizationStatus.AuthorizedAlways
-                ////    || status == CLAuthorizationStatus.AuthorizedWhenInUse;
-                ////}
-                ////else
+                if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+                {
+                    return status == CLAuthorizationStatus.AuthorizedAlways
+                    || status == CLAuthorizationStatus.AuthorizedWhenInUse;
+                }
+                else
                 {
                     return status == CLAuthorizationStatus.Authorized;
                 }

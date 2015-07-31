@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CrossPlatformLibrary.Geolocation.Plugin.iOSUnified")]
+[assembly: AssemblyTitle("CrossPlatformLibrary.Geolocation.iOSUnified")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CrossPlatformLibrary.Geolocation.Plugin.iOSUnified")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("Thomas Galliker")]
+[assembly: AssemblyProduct("CrossPlatformLibrary.Geolocation.iOSUnified")]
+[assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

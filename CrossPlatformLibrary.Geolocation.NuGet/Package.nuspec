@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>CrossPlatformLibrary.Geolocation</id>
-    <version>1.0.4-alpha</version>
+    <version>1.0.8-alpha</version>
     <title>CrossPlatformLibrary.Geolocation</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -11,6 +11,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>CrossPlatformLibrary.Geolocation is a plug-in for geo information handling.</summary>
     <description>CrossPlatformLibrary.Geolocation is a plug-in for geo information handling. It enables cross-platform GPS functionality.</description>
+    <tags>
+      xamarin pcl CrossPlatformLibrary CrossPlatformLibrary.Geolocation plugin for Geolocation gps geolocator ILocationService location position GeoCoordinateWatcher CLLocationManager LocationManager
+      windows phone winphone wp8 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch mvvmcross mvvmlight
+    </tags>
     <releaseNotes />
     <copyright>Copyright 2015</copyright>
     <language>en-US</language>
@@ -20,7 +24,7 @@
       <group targetFramework="MonoTouch10">
         <dependency id="CommonServiceLocator" version="1.3" />
       </group>
-      <group targetFramework="Xamarin.iOS10">
+      <group targetFramework="xamarin.ios10">
         <dependency id="CommonServiceLocator" version="1.3" />
       </group>
       <group targetFramework="MonoAndroid10">
@@ -29,7 +33,7 @@
       <group targetFramework="wp8">
         <dependency id="CommonServiceLocator" version="1.3" />
       </group>
-      <group targetFramework="portable-net45">
+      <group targetFramework="portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10">
         <dependency id="CommonServiceLocator" version="1.3" />
       </group>
 
@@ -37,7 +41,7 @@
       <group targetFramework="MonoTouch10">
         <dependency id="CrossPlatformLibrary" />
       </group>
-      <group targetFramework="Xamarin.iOS10">
+      <group targetFramework="xamarin.ios10">
         <dependency id="CrossPlatformLibrary" />
       </group>
       <group targetFramework="MonoAndroid10">
@@ -46,14 +50,14 @@
       <group targetFramework="wp8">
         <dependency id="CrossPlatformLibrary" />
       </group>
-      <group targetFramework="portable-net45">
+      <group targetFramework="portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10">
         <dependency id="CrossPlatformLibrary" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <!--PCL-->
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\portable-net45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\CrossPlatformLibrary.Geolocation.dll" />
 
     <!--Xamarin.Android-->
     <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\MonoAndroid10\CrossPlatformLibrary.Geolocation.dll" />
@@ -64,8 +68,8 @@
     <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\MonoTouch10\CrossPlatformLibrary.Geolocation.Platform.dll" />
 
     <!--Xamarin.iOS Unified API-->
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\Xamarin.iOS10\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\Xamarin.iOS10\CrossPlatformLibrary.Geolocation.Platform.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.Platform.dll" />
 
     <!--Windows Phone 8-->
     <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\wp8\CrossPlatformLibrary.Geolocation.dll" />
