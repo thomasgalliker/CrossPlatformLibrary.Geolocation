@@ -1,5 +1,5 @@
-using Xamarin.Tracing;
-using Xamarin.Utils;
+using CrossPlatformLibrary.Tracing;
+using CrossPlatformLibrary.Utils;
 
 using System;
 using System.Threading;

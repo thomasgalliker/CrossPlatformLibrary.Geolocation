@@ -1,6 +1,6 @@
 ﻿using System.Device.Location;
 
-using Xamarin.Utils;
+using CrossPlatformLibrary.Utils;
 
 namespace CrossPlatformLibrary.Geolocation
 {

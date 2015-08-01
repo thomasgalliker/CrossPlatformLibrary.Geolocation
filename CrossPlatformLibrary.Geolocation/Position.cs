@@ -1,10 +1,11 @@
 using System;
+using System.Diagnostics;
 
-using Xamarin.Utils;
+using CrossPlatformLibrary.Utils;
 
 namespace CrossPlatformLibrary.Geolocation
 {
-    [System.Diagnostics.DebuggerDisplay("Longitude={Longitude}, Latitude={Latitude}")]
+    [DebuggerDisplay("Longitude={Longitude}, Latitude={Latitude}")]
     public class Position
     {
         public static readonly Position Unknown = new Position();

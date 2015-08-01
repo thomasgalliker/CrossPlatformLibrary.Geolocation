@@ -11,8 +11,8 @@ using Android.OS;
 
 using Java.Lang;
 
-using Xamarin.Tracing;
-using Xamarin.Utils;
+using CrossPlatformLibrary.Tracing;
+using CrossPlatformLibrary.Utils;
 
 namespace CrossPlatformLibrary.Geolocation
 {
