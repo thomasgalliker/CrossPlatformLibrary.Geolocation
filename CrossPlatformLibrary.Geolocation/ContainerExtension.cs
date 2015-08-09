@@ -1,5 +1,4 @@
-﻿using CrossPlatformLibrary.Bootstrapping;
-using CrossPlatformLibrary.IoC;
+﻿using CrossPlatformLibrary.IoC;
 
 namespace CrossPlatformLibrary.Geolocation
 {
