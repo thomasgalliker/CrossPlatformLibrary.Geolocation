@@ -48,11 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CrossPlatformLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CrossPlatformLibrary.1.0.22-alpha\lib\xamarin.ios10\CrossPlatformLibrary.dll</HintPath>
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.23-alpha\lib\xamarin.ios10\CrossPlatformLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="CrossPlatformLibrary.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CrossPlatformLibrary.1.0.22-alpha\lib\xamarin.ios10\CrossPlatformLibrary.Platform.dll</HintPath>
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.23-alpha\lib\xamarin.ios10\CrossPlatformLibrary.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
