@@ -6,7 +6,7 @@ namespace CrossPlatformLibrary.Geolocation
     {
         public void Initialize(ISimpleIoc container)
         {
-            container.RegisterPlatformSpecific<ILocationService>();
+            container.RegisterWithConvention<ILocationService>();
         }
     }
 }
