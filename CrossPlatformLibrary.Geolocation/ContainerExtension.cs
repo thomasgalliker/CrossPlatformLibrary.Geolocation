@@ -1,6 +1,7 @@
 ﻿using System;
 
 using CrossPlatformLibrary.IoC;
+using CrossPlatformLibrary.Tools.PlatformSpecific;
 
 namespace CrossPlatformLibrary.Geolocation
 {

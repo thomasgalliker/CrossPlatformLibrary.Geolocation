@@ -18,7 +18,7 @@ namespace CrossPlatformLibrary.Geolocation
             System.Threading.Tasks.Task.Factory.StartNew(
                 () =>
                     {
-                        this.watcher = new GeoCoordinateWatcher(Geolocator.GetAccuracy(accuracy));
+                        this.watcher = new GeoCoordinateWatcher(LocationService.GetAccuracy(accuracy));
                         this.watcher.PositionChanged += this.WatcherOnPositionChanged;
                         this.watcher.StatusChanged += this.WatcherOnStatusChanged;
 
@@ -73,7 +73,7 @@ namespace CrossPlatformLibrary.Geolocation
 
             if (this.bestPosition != null)
             {
-                this.tcs.TrySetResult(Geolocator.GetPosition(this.bestPosition));
+                this.tcs.TrySetResult(LocationService.GetPosition(this.bestPosition));
             }
             else
             {
@@ -106,7 +106,7 @@ namespace CrossPlatformLibrary.Geolocation
 
             if (e.Position.Location.HorizontalAccuracy <= this.desiredAccuracy && isRecent)
             {
-                this.tcs.TrySetResult(Geolocator.GetPosition(e.Position));
+                this.tcs.TrySetResult(LocationService.GetPosition(e.Position));
             }
 
             if (this.bestPosition == null || e.Position.Location.HorizontalAccuracy < this.bestPosition.Location.HorizontalAccuracy)

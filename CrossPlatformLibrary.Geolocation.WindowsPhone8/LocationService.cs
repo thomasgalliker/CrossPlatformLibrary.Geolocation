@@ -8,14 +8,14 @@ using CrossPlatformLibrary.Utils;
 
 namespace CrossPlatformLibrary.Geolocation
 {
-    public class Geolocator : ILocationService
+    public class LocationService : ILocationService
     {
         private readonly ITracer tracer;
 
         public event EventHandler<PositionErrorEventArgs> PositionError;
         public event EventHandler<PositionEventArgs> PositionChanged;
 
-        public Geolocator(ITracer tracer)
+        public LocationService(ITracer tracer)
         {
             Guard.ArgumentNotNull(() => tracer);
 
@@ -112,7 +112,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
             if (this.IsListening)
             {
-                throw new InvalidOperationException("This Geolocator is already listening");
+                throw new InvalidOperationException("This LocationService is already listening");
             }
 
             this.watcher = new GeoCoordinateWatcher(GetAccuracy(this.DesiredAccuracy));

@@ -12,16 +12,15 @@ using UIKit;
 using MonoTouch.CoreLocation;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-
 #endif
 
 namespace CrossPlatformLibrary.Geolocation
 {
-    public class Geolocator : ILocationService
+    public class LocationService : ILocationService
     {
         private readonly ITracer tracer;
 
-        public Geolocator(ITracer tracer)
+        public LocationService(ITracer tracer)
         {
             Guard.ArgumentNotNull(() => tracer);
 

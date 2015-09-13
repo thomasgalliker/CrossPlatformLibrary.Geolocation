@@ -41,22 +41,22 @@
     <Compile Include="..\CrossPlatformLibrary.Geolocation.iOS\GeolocationSingleUpdateDelegate.cs">
       <Link>GeolocationSingleUpdateDelegate.cs</Link>
     </Compile>
-    <Compile Include="..\CrossPlatformLibrary.Geolocation.iOS\Geolocator.cs">
-      <Link>Geolocator.cs</Link>
+    <Compile Include="..\CrossPlatformLibrary.Geolocation.iOS\LocationService.cs">
+      <Link>LocationService.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CrossPlatformLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CrossPlatformLibrary.1.0.27-alpha\lib\xamarin.ios10\CrossPlatformLibrary.dll</HintPath>
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.54-alpha\lib\xamarin.ios10\CrossPlatformLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="CrossPlatformLibrary.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CrossPlatformLibrary.1.0.27-alpha\lib\xamarin.ios10\CrossPlatformLibrary.Platform.dll</HintPath>
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.54-alpha\lib\xamarin.ios10\CrossPlatformLibrary.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -65,13 +65,13 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CrossPlatformLibrary.Geolocation\CrossPlatformLibrary.Geolocation.csproj">
       <Project>{A6FCEF44-D2BA-42C7-B3CB-13667BCD7B54}</Project>
       <Name>CrossPlatformLibrary.Geolocation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
