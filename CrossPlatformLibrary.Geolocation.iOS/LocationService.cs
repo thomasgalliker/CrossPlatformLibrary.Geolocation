@@ -4,6 +4,8 @@ using CrossPlatformLibrary.Utils;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+
+using CrossPlatformLibrary.Geolocation.Exceptions;
 #if __UNIFIED__
 using CoreLocation;
 using Foundation;

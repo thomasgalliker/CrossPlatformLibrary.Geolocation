@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 
+using CrossPlatformLibrary.Geolocation.Exceptions;
 
 namespace CrossPlatformLibrary.Geolocation
 {

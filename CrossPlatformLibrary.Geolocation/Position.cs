@@ -9,12 +9,11 @@ namespace CrossPlatformLibrary.Geolocation
     public class Position
     {
         public static readonly Position Unknown = new Position();
-        private double latitude = double.NaN;
-        private double longitude = double.NaN;
 
         public Position()
         {
-            this.IsUnknown = true;
+            this.Latitude = double.NaN;
+            this.Longitude = double.NaN;
         }
 
         public Position(Position position)
@@ -37,53 +36,24 @@ namespace CrossPlatformLibrary.Geolocation
             this.Longitude = longitude;
         }
 
-        public bool IsUnknown { get; private set; }
+        public bool IsUnknown
+        {
+            get
+            {
+                if (double.IsNaN(this.Longitude) || double.IsNaN(this.Latitude))
+                {
+                    return true;
+                }
+                
+                return false;
+            }
+        }
 
         public DateTimeOffset Timestamp { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the latitude.
-        /// </summary>
-        public double Latitude
-        {
-            get
-            {
-                return this.latitude;
-            }
-            set
-            {
-                this.latitude = value;
-                this.CheckIfIsUnknown();
-            }
-        }
+        public double Latitude { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the longitude.
-        /// </summary>
-        public double Longitude
-        {
-            get
-            {
-                return this.longitude;
-            }
-            set
-            {
-                this.longitude = value;
-                this.CheckIfIsUnknown();
-            }
-        }
-
-        private void CheckIfIsUnknown()
-        {
-            if (double.IsNaN(this.longitude) || double.IsNaN(this.latitude))
-            {
-                this.IsUnknown = true;
-            }
-            else
-            {
-                this.IsUnknown = false;
-            }
-        }
+        public double Longitude { get; set; }
 
         /// <summary>
         ///     Gets or sets the altitude in meters relative to sea level.
@@ -153,76 +123,5 @@ namespace CrossPlatformLibrary.Geolocation
         {
             return (radian / Math.PI * 180.0);
         }
-    }
-    public enum DistanceUnit
-    {
-        Kilometers,
-        Miles,
-        NauticalMiles
-    }
-
-    public class PositionEventArgs : EventArgs
-    {
-        public PositionEventArgs(Position position)
-        {
-            if (position == null)
-            {
-                throw new ArgumentNullException("position");
-            }
-
-            this.Position = position;
-        }
-
-        public Position Position { get; private set; }
-    }
-
-    public class GeolocationException : Exception
-    {
-        public GeolocationException(GeolocationError error)
-            : base("A geolocation error occured: " + error)
-        {
-            if (!Enum.IsDefined(typeof(GeolocationError), error))
-            {
-                throw new ArgumentException("error is not a valid GelocationError member", "error");
-            }
-
-            this.Error = error;
-        }
-
-        public GeolocationException(GeolocationError error, Exception innerException)
-            : base("A geolocation error occured: " + error, innerException)
-        {
-            if (!Enum.IsDefined(typeof(GeolocationError), error))
-            {
-                throw new ArgumentException("error is not a valid GelocationError member", "error");
-            }
-
-            this.Error = error;
-        }
-
-        public GeolocationError Error { get; private set; }
-    }
-
-    public class PositionErrorEventArgs : EventArgs
-    {
-        public PositionErrorEventArgs(GeolocationError error)
-        {
-            this.Error = error;
-        }
-
-        public GeolocationError Error { get; private set; }
-    }
-
-    public enum GeolocationError
-    {
-        /// <summary>
-        ///     The provider was unable to retrieve any position data.
-        /// </summary>
-        PositionUnavailable,
-
-        /// <summary>
-        ///     The app is not, or no longer, authorized to receive location data.
-        /// </summary>
-        Unauthorized
     }
 }

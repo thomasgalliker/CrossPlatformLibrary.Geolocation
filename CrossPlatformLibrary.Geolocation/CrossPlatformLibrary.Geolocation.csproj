@@ -36,9 +36,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ContainerExtension.cs" />
+    <Compile Include="DistanceUnit.cs" />
+    <Compile Include="Exceptions\GeolocationError.cs" />
+    <Compile Include="Exceptions\GeolocationException.cs" />
     <Compile Include="IClusteredGeoObject.cs" />
     <Compile Include="ILocationService.cs" />
     <Compile Include="Position.cs" />
+    <Compile Include="PositionErrorEventArgs.cs" />
+    <Compile Include="PositionEventArgs.cs" />
     <Compile Include="PositionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +60,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

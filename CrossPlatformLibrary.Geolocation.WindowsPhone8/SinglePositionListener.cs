@@ -3,6 +3,8 @@ using System.Device.Location;
 using System.Threading;
 using System.Threading.Tasks;
 
+using CrossPlatformLibrary.Geolocation.Exceptions;
+
 namespace CrossPlatformLibrary.Geolocation
 {
     internal class SinglePositionListener

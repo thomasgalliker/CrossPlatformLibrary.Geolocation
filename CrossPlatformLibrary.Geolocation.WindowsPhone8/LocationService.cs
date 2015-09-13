@@ -3,6 +3,7 @@ using System.Device.Location;
 using System.Threading;
 using System.Threading.Tasks;
 
+using CrossPlatformLibrary.Geolocation.Exceptions;
 using CrossPlatformLibrary.Tracing;
 using CrossPlatformLibrary.Utils;
 

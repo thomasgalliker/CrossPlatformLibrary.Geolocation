@@ -2,25 +2,24 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Locations;
 using Android.OS;
 
-using Java.Lang;
-
+using CrossPlatformLibrary.Geolocation.Exceptions;
 using CrossPlatformLibrary.Tracing;
 using CrossPlatformLibrary.Utils;
+using Java.Lang;
 
 namespace CrossPlatformLibrary.Geolocation
 {
-    public class Geolocator : ILocationService
+    public class LocationService : ILocationService
     {
         private readonly ITracer tracer;
 
-        public Geolocator(ITracer tracer)
+        public LocationService(ITracer tracer)
         {
             Guard.ArgumentNotNull(() => tracer);
 
@@ -244,7 +243,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
             if (this.IsListening)
             {
-                throw new InvalidOperationException("This Geolocator is already listening");
+                throw new InvalidOperationException("This LocationService is already listening");
             }
 
             this.listener = new GeolocationContinuousListener(this.manager, TimeSpan.FromMilliseconds(minTime), this.providers);

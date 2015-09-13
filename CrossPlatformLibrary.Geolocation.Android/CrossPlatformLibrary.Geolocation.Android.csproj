@@ -60,7 +60,7 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="GeolocationContinuousListener.cs" />
     <Compile Include="GeolocationSingleListener.cs" />
-    <Compile Include="Geolocator.cs" />
+    <Compile Include="LocationService.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
