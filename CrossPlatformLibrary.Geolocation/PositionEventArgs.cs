@@ -1,6 +1,6 @@
 using System;
 
-using CrossPlatformLibrary.Utils;
+using Guards;
 
 namespace CrossPlatformLibrary.Geolocation
 {

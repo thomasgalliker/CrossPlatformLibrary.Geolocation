@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using CrossPlatformLibrary.Geolocation.Exceptions;
+
+using Guards;
 #if __UNIFIED__
 using CoreLocation;
 using Foundation;

@@ -1,7 +1,8 @@
 using System;
 
 using CrossPlatformLibrary.Geolocation.Exceptions;
-using CrossPlatformLibrary.Utils;
+
+using Guards;
 
 namespace CrossPlatformLibrary.Geolocation
 {

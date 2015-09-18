@@ -1,6 +1,6 @@
 ﻿using System.Device.Location;
 
-using CrossPlatformLibrary.Utils;
+using Guards;
 
 namespace CrossPlatformLibrary.Geolocation
 {

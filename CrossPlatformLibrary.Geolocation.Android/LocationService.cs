@@ -10,7 +10,9 @@ using Android.OS;
 
 using CrossPlatformLibrary.Geolocation.Exceptions;
 using CrossPlatformLibrary.Tracing;
-using CrossPlatformLibrary.Utils;
+
+using Guards;
+
 using Java.Lang;
 
 namespace CrossPlatformLibrary.Geolocation
