@@ -10,7 +10,7 @@ namespace CrossPlatformLibrary.Geolocation
     {
         public PositionErrorEventArgs(GeolocationError error)
         {
-            Guard.ArgumentNotNull(() => error);
+            Guard.ArgumentNotNull(error, "error");
 
             this.Error = error;
         }

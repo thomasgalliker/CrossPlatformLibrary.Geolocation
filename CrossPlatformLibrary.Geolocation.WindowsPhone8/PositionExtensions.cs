@@ -8,7 +8,7 @@ namespace CrossPlatformLibrary.Geolocation
     {
         public static GeoCoordinate ToGeoCoordinate(this Position position)
         {
-            Guard.ArgumentNotNull(() => position);
+            Guard.ArgumentNotNull(position, "position");
 
             return new GeoCoordinate
                        {
@@ -24,7 +24,7 @@ namespace CrossPlatformLibrary.Geolocation
 
         public static Position ToPosition(this GeoCoordinate geoCoordinate)
         {
-            Guard.ArgumentNotNull(() => geoCoordinate);
+            Guard.ArgumentNotNull(geoCoordinate, "geoCoordinate");
 
             return new Position
                        {

@@ -8,7 +8,7 @@ namespace CrossPlatformLibrary.Geolocation
     {
         public PositionEventArgs(Position position)
         {
-            Guard.ArgumentNotNull(() => position);
+            Guard.ArgumentNotNull(position, "position");
 
             this.Position = position;
         }

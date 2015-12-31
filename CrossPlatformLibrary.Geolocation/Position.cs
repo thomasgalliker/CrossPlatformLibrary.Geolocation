@@ -19,7 +19,7 @@ namespace CrossPlatformLibrary.Geolocation
 
         public Position(Position position)
         {
-            Guard.ArgumentNotNull(() => position);
+            Guard.ArgumentNotNull(position, "position");
 
             this.Timestamp = position.Timestamp;
             this.Latitude = position.Latitude;
