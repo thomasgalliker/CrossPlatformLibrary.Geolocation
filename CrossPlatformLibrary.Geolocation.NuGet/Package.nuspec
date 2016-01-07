@@ -6,7 +6,7 @@
     <title>CrossPlatformLibrary.Geolocation</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
-    <projectUrl>https://nuget.org/packages/CrossPlatformLibrary.Geolocation</projectUrl>
+    <projectUrl>https://github.com/thomasgalliker/CrossPlatformLibrary.Geolocation</projectUrl>
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>CrossPlatformLibrary.Geolocation is a plug-in for geo information handling.</summary>
