@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>CrossPlatformLibrary.Geolocation</id>
-    <version>1.0.23-pre1</version>
+    <version>1.0.23-pre2</version>
     <title>CrossPlatformLibrary.Geolocation</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -17,7 +17,7 @@
     </tags>
     <releaseNotes>
     </releaseNotes>
-    <copyright>Copyright 2015</copyright>
+    <copyright>Copyright 2016</copyright>
     <language>en-US</language>
     <dependencies>
       <group targetFramework="monotouch10">
