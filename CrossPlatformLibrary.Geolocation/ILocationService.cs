@@ -38,8 +38,9 @@ namespace CrossPlatformLibrary.Geolocation
         /// <param name="token">Cancelation token</param>
         /// <param name="includeHeading">If you would like to include heading</param>
         /// <returns>Position</returns>
-        /// <exception cref="TaskCanceledException"></exception>
-        /// <exception cref="GeolocationException"></exception>
+        /// <exception cref="TaskCanceledException">Thrown when the request times out.</exception>
+        /// <exception cref="GeolocationPositionUnavailableException">Thrown when no valid GPS position could be found.</exception>
+        /// <exception cref="GeolocationUnauthorizedException">Thrown when the application has no permissions to use the GPS service.</exception>
         Task<Position> GetPositionAsync(int timeoutMilliseconds = Timeout.Infinite, CancellationToken? token = null, bool includeHeading = false);
 
         /// <summary>

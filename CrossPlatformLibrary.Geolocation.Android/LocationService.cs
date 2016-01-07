@@ -188,13 +188,13 @@ namespace CrossPlatformLibrary.Geolocation
                             this.manager.RemoveUpdates(singleListener);
                         }
 
-                        tcs.SetException(new GeolocationException(GeolocationError.PositionUnavailable));
+                        tcs.SetException(new GeolocationPositionUnavailableException());
                         return tcs.Task;
                     }
                 }
                 catch (SecurityException ex)
                 {
-                    tcs.SetException(new GeolocationException(GeolocationError.Unauthorized, ex));
+                    tcs.SetException(new GeolocationUnauthorizedException(ex));
                     return tcs.Task;
                 }
 

@@ -1,11 +1,9 @@
-﻿using System;
+﻿using CrossPlatformLibrary.Geolocation.Exceptions;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
-
-using CrossPlatformLibrary.Geolocation.Exceptions;
 
 namespace CrossPlatformLibrary.Geolocation
 {
@@ -118,7 +116,7 @@ namespace CrossPlatformLibrary.Geolocation
                             Exception ex = op.ErrorCode;
                             if (ex is UnauthorizedAccessException)
                             {
-                                ex = new GeolocationException(GeolocationError.Unauthorized, ex);
+                                ex = new GeolocationUnauthorizedException(ex);
                             }
 
                             tcs.SetException(ex);

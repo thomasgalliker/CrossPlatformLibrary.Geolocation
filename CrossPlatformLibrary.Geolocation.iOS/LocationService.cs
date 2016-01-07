@@ -1,5 +1,4 @@
 using CrossPlatformLibrary.Tracing;
-using CrossPlatformLibrary.Utils;
 
 using System;
 using System.Threading;
@@ -156,7 +155,19 @@ namespace CrossPlatformLibrary.Geolocation
                     EventHandler<PositionErrorEventArgs> gotError = null;
                     gotError = (s, e) =>
                         {
-                            tcs.TrySetException(new GeolocationException(e.Error));
+                            if (e.Error == GeolocationError.Unauthorized)
+                            {
+                                tcs.TrySetException(new GeolocationUnauthorizedException());
+                            }
+                            else if (e.Error == GeolocationError.PositionUnavailable)
+                            {
+                                tcs.TrySetException(new GeolocationPositionUnavailableException());
+                            }
+                            else
+                            {
+                                tcs.TrySetException(new Exception(string.Format("Unknown PositionErrorEventArgs: {0}", e.Error)));
+                            }
+
                             this.PositionError -= gotError;
                         };
 

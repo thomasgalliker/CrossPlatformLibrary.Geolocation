@@ -1,13 +1,10 @@
+using Android.Locations;
+using Android.OS;
+using CrossPlatformLibrary.Geolocation.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Android.Locations;
-using Android.OS;
-
-using CrossPlatformLibrary.Geolocation.Exceptions;
-
 using Object = Java.Lang.Object;
 
 namespace CrossPlatformLibrary.Geolocation
@@ -58,7 +55,7 @@ namespace CrossPlatformLibrary.Geolocation
             {
                 if (this.activeProviders.Remove(provider) && this.activeProviders.Count == 0)
                 {
-                    this.completionSource.TrySetException(new GeolocationException(GeolocationError.PositionUnavailable));
+                    this.completionSource.TrySetException(new GeolocationPositionUnavailableException());
                 }
             }
         }

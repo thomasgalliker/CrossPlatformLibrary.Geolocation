@@ -67,7 +67,7 @@ namespace CrossPlatformLibrary.Geolocation
             if (status == CLAuthorizationStatus.Denied || status == CLAuthorizationStatus.Restricted)
             {
                 this.StopListening();
-                this.tcs.TrySetException(new GeolocationException(GeolocationError.Unauthorized));
+                this.tcs.TrySetException(new GeolocationUnauthorizedException());
             }
         }
 
@@ -77,7 +77,7 @@ namespace CrossPlatformLibrary.Geolocation
             {
                 case CLError.Network:
                     this.StopListening();
-                    this.tcs.SetException(new GeolocationException(GeolocationError.PositionUnavailable));
+                    this.tcs.SetException(new GeolocationPositionUnavailableException());
                     break;
             }
         }

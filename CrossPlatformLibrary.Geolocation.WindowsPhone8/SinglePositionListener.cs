@@ -87,11 +87,11 @@ namespace CrossPlatformLibrary.Geolocation
             switch (e.Status)
             {
                 case GeoPositionStatus.NoData:
-                    this.tcs.TrySetException(new GeolocationException(GeolocationError.PositionUnavailable));
+                    this.tcs.TrySetException(new GeolocationPositionUnavailableException());
                     break;
 
                 case GeoPositionStatus.Disabled:
-                    this.tcs.TrySetException(new GeolocationException(GeolocationError.Unauthorized));
+                    this.tcs.TrySetException(new GeolocationUnauthorizedException());
                     break;
             }
         }
