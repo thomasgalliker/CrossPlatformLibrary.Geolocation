@@ -14,16 +14,16 @@ namespace CrossPlatformLibrary.Geolocation
 {
     internal class GeolocationSingleListener : Object, ILocationListener
     {
-        public GeolocationSingleListener(float desiredAccuracy, int timeout, IEnumerable<string> activeProviders, Action finishedCallback)
+        public GeolocationSingleListener(float desiredAccuracy, int timeoutMilliseconds, IEnumerable<string> activeProviders, Action finishedCallback)
         {
             this.desiredAccuracy = desiredAccuracy;
             this.finishedCallback = finishedCallback;
 
             this.activeProviders = new HashSet<string>(activeProviders);
 
-            if (timeout != Timeout.Infinite)
+            if (timeoutMilliseconds != Timeout.Infinite)
             {
-                this.timer = new Timer(this.TimesUp, null, timeout, 0);
+                this.timer = new Timer(this.TimesUp, null, timeoutMilliseconds, 0);
             }
         }
 

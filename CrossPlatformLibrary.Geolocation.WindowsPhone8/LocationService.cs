@@ -89,21 +89,21 @@ namespace CrossPlatformLibrary.Geolocation
         }
 
         /// <inheritdoc/>
-        public Task<Position> GetPositionAsync(int timeout = Timeout.Infinite, CancellationToken? cancelToken = null, bool includeHeading = false)
+        public Task<Position> GetPositionAsync(int timeoutMilliseconds = Timeout.Infinite, CancellationToken? cancelToken = null, bool includeHeading = false)
         {
-            this.tracer.Debug("GetPositionAsync with timeout={0}, includeHeading={1}", timeout, includeHeading);
+            this.tracer.Debug("GetPositionAsync with timeoutMilliseconds={0}, includeHeading={1}", timeoutMilliseconds, includeHeading);
 
             if (!cancelToken.HasValue)
             {
                 cancelToken = CancellationToken.None;
             }
 
-            if (timeout <= 0 && timeout != Timeout.Infinite)
+            if (timeoutMilliseconds <= 0 && timeoutMilliseconds != Timeout.Infinite)
             {
-                throw new ArgumentOutOfRangeException("timeout", "timeout must be greater than or equal to 0");
+                throw new ArgumentOutOfRangeException("timeoutMilliseconds", "timeout must be greater than or equal to 0");
             }
 
-            var singlePositionListenerTask = new SinglePositionListener(this.DesiredAccuracy, timeout, cancelToken.Value).Task;
+            var singlePositionListenerTask = new SinglePositionListener(this.DesiredAccuracy, timeoutMilliseconds, cancelToken.Value).Task;
             singlePositionListenerTask.ContinueWith((callback) =>
                 {
                     if (callback.Status == TaskStatus.RanToCompletion)
@@ -258,7 +258,7 @@ namespace CrossPlatformLibrary.Geolocation
                 p.Speed = location.Speed;
             }
 
-            p.Timestamp = position.Timestamp;
+            p.Timestamp = position.Timestamp.ToUniversalTime();
 
             return p;
         }

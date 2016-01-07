@@ -15,14 +15,14 @@ namespace CrossPlatformLibrary.Geolocation
 {
     internal class GeolocationSingleUpdateDelegate : CLLocationManagerDelegate
     {
-        public GeolocationSingleUpdateDelegate(CLLocationManager manager, double desiredAccuracy, bool includeHeading, int timeout, CancellationToken cancelToken)
+        public GeolocationSingleUpdateDelegate(CLLocationManager manager, double desiredAccuracy, bool includeHeading, int timeoutMilliseconds, CancellationToken cancelToken)
         {
             this.manager = manager;
             this.tcs = new TaskCompletionSource<Position>(manager);
             this.desiredAccuracy = desiredAccuracy;
             this.includeHeading = includeHeading;
 
-            if (timeout != Timeout.Infinite)
+            if (timeoutMilliseconds != Timeout.Infinite)
             {
                 Timer t = null;
                 t = new Timer(
@@ -41,7 +41,7 @@ namespace CrossPlatformLibrary.Geolocation
                             t.Dispose();
                         },
                     null,
-                    timeout,
+                    timeoutMilliseconds,
                     0);
             }
 

@@ -13,20 +13,20 @@ namespace CrossPlatformLibrary.Geolocation
 
         public const int Infite = -1;
 
-        public Timeout(int timeout, Action timesup)
+        public Timeout(int timeoutMilliseconds, Action timesup)
         {
-            if (timeout == Infite)
+            if (timeoutMilliseconds == Infite)
             {
                 return; // nothing to do
             }
-            if (timeout < 0)
+            if (timeoutMilliseconds < 0)
             {
-                throw new ArgumentOutOfRangeException("timeout");
+                throw new ArgumentOutOfRangeException("timeoutMilliseconds");
             }
 
             Guard.ArgumentNotNull(() => timesup);
 
-            Task.Delay(TimeSpan.FromMilliseconds(timeout), this.canceller.Token).ContinueWith(
+            Task.Delay(TimeSpan.FromMilliseconds(timeoutMilliseconds), this.canceller.Token).ContinueWith(
                 t =>
                     {
                         if (!t.IsCanceled)

@@ -1,21 +1,29 @@
-﻿using System;
+﻿using CrossPlatformLibrary.Geolocation.Exceptions;
+using System;
 using System.Device.Location;
 using System.Threading;
 using System.Threading.Tasks;
-
-using CrossPlatformLibrary.Geolocation.Exceptions;
 
 namespace CrossPlatformLibrary.Geolocation
 {
     internal class SinglePositionListener
     {
-        internal SinglePositionListener(double accuracy, int timeout, CancellationToken cancelToken)
+        private GeoPosition<GeoCoordinate> bestPosition;
+        private GeoCoordinateWatcher watcher;
+        private readonly double desiredAccuracy;
+        private readonly DateTimeOffset start;
+        private readonly Timer timer;
+        private readonly int timeoutMilliseconds;
+        private readonly TaskCompletionSource<Position> tcs = new TaskCompletionSource<Position>();
+        private readonly CancellationToken cancelToken;
+
+        internal SinglePositionListener(double accuracy, int timeoutMilliseconds, CancellationToken cancelToken)
         {
             cancelToken.Register(this.HandleTimeout, true);
             this.cancelToken = cancelToken;
             this.desiredAccuracy = accuracy;
             this.start = DateTime.Now;
-            this.timeout = timeout;
+            this.timeoutMilliseconds = timeoutMilliseconds;
 
             System.Threading.Tasks.Task.Factory.StartNew(
                 () =>
@@ -27,9 +35,9 @@ namespace CrossPlatformLibrary.Geolocation
                         this.watcher.Start();
                     });
 
-            if (timeout != Timeout.Infinite)
+            if (timeoutMilliseconds != Timeout.Infinite)
             {
-                this.timer = new Timer(this.HandleTimeout, null, timeout, Timeout.Infinite);
+                this.timer = new Timer(this.HandleTimeout, null, timeoutMilliseconds, Timeout.Infinite);
             }
 
             this.Task.ContinueWith(this.Cleanup);
@@ -42,15 +50,6 @@ namespace CrossPlatformLibrary.Geolocation
                 return this.tcs.Task;
             }
         }
-
-        private GeoPosition<GeoCoordinate> bestPosition;
-        private GeoCoordinateWatcher watcher;
-        private readonly double desiredAccuracy;
-        private readonly DateTimeOffset start;
-        private readonly Timer timer;
-        private readonly int timeout;
-        private readonly TaskCompletionSource<Position> tcs = new TaskCompletionSource<Position>();
-        private readonly CancellationToken cancelToken;
 
         private void Cleanup(Task task)
         {
@@ -104,7 +103,7 @@ namespace CrossPlatformLibrary.Geolocation
                 return;
             }
 
-            bool isRecent = (e.Position.Timestamp - this.start).TotalMilliseconds < this.timeout || (this.timeout == Timeout.Infinite && this.cancelToken == CancellationToken.None);
+            bool isRecent = (e.Position.Timestamp - this.start).TotalMilliseconds < this.timeoutMilliseconds || (this.timeoutMilliseconds == Timeout.Infinite && this.cancelToken == CancellationToken.None);
 
             if (e.Position.Location.HorizontalAccuracy <= this.desiredAccuracy && isRecent)
             {

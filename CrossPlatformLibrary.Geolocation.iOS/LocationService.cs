@@ -24,8 +24,12 @@ namespace CrossPlatformLibrary.Geolocation
     {
         private readonly ITracer tracer;
 
+        private readonly CLLocationManager manager;
+        private Position position;
+
         public LocationService(ITracer tracer)
         {
+            this.DesiredAccuracy = 50;
             Guard.ArgumentNotNull(() => tracer);
 
             this.tracer = tracer;
@@ -62,24 +66,19 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public event EventHandler<PositionErrorEventArgs> PositionError;
 
+        /// <inheritdoc/>
         public event EventHandler<PositionEventArgs> PositionChanged;
 
-        public double DesiredAccuracy
-        {
-            get
-            {
-                return this.desiredAccuracy;
-            }
-            set
-            {
-                this.desiredAccuracy = value;
-            }
-        }
+        /// <inheritdoc/>
+        public double DesiredAccuracy { get; set; }
 
+        /// <inheritdoc/>
         public bool IsListening { get; private set; }
 
+        /// <inheritdoc/>
         public bool SupportsHeading
         {
             get
@@ -88,6 +87,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public bool IsGeolocationAvailable
         {
             get
@@ -96,6 +96,7 @@ namespace CrossPlatformLibrary.Geolocation
             } // all iOS devices support at least wifi geolocation
         }
 
+        /// <inheritdoc/>
         public bool IsGeolocationEnabled
         {
             get
@@ -114,13 +115,14 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
-        public Task<Position> GetPositionAsync(int timeout = Timeout.Infinite, CancellationToken? cancelToken = null, bool includeHeading = false)
+        /// <inheritdoc/>
+        public Task<Position> GetPositionAsync(int timeoutMilliseconds = Timeout.Infinite, CancellationToken? cancelToken = null, bool includeHeading = false)
         {
-            this.tracer.Debug("GetPositionAsync with timeout={0}, includeHeading={1}", timeout, includeHeading);
+            this.tracer.Debug("GetPositionAsync with timeoutMilliseconds={0}, includeHeading={1}", timeoutMilliseconds, includeHeading);
 
-            if (timeout <= 0 && timeout != Timeout.Infinite)
+            if (timeoutMilliseconds <= 0 && timeoutMilliseconds != Timeout.Infinite)
             {
-                throw new ArgumentOutOfRangeException("timeout", "Timeout must be positive or Timeout.Infinite");
+                throw new ArgumentOutOfRangeException("timeoutMilliseconds", "Timeout must be positive or Timeout.Infinite");
             }
 
             if (!cancelToken.HasValue)
@@ -135,7 +137,7 @@ namespace CrossPlatformLibrary.Geolocation
                 var m = this.GetManager();
 
                 tcs = new TaskCompletionSource<Position>(m);
-                var singleListener = new GeolocationSingleUpdateDelegate(m, this.DesiredAccuracy, includeHeading, timeout, cancelToken.Value);
+                var singleListener = new GeolocationSingleUpdateDelegate(m, this.DesiredAccuracy, includeHeading, timeoutMilliseconds, cancelToken.Value);
                 m.Delegate = singleListener;
 
                 m.StartUpdatingLocation();
@@ -178,6 +180,7 @@ namespace CrossPlatformLibrary.Geolocation
             return tcs.Task;
         }
 
+        /// <inheritdoc/>
         public void StartListening(int minTime, double minDistance, bool includeHeading = false)
         {
             if (minTime < 0)
@@ -204,6 +207,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public void StopListening()
         {
             if (!this.IsListening)
@@ -220,10 +224,6 @@ namespace CrossPlatformLibrary.Geolocation
             this.manager.StopUpdatingLocation();
             this.position = null;
         }
-
-        private readonly CLLocationManager manager;
-        private Position position;
-        private double desiredAccuracy = 50;
 
         private CLLocationManager GetManager()
         {
