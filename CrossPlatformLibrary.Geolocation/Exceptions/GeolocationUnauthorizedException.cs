@@ -2,7 +2,7 @@ using System;
 
 namespace CrossPlatformLibrary.Geolocation.Exceptions
 {
-    public class GeolocationUnauthorizedException : Exception
+    public class GeolocationUnauthorizedException : GeolocationException
     {
         private const string ErrorMessage = "A geolocation error occured: Unauthorized.";
 
