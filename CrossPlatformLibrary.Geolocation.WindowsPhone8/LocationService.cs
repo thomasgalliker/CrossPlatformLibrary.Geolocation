@@ -13,8 +13,14 @@ namespace CrossPlatformLibrary.Geolocation
     public class LocationService : ILocationService
     {
         private readonly ITracer tracer;
+        private GeoCoordinateWatcher watcher;
+        private bool isEnabled;
+        private double desiredAccuracy = 50;
 
+        /// <inheritdoc/>
         public event EventHandler<PositionErrorEventArgs> PositionError;
+
+        /// <inheritdoc/>
         public event EventHandler<PositionEventArgs> PositionChanged;
 
         public LocationService(ITracer tracer)
@@ -24,6 +30,7 @@ namespace CrossPlatformLibrary.Geolocation
             this.tracer = tracer;
         }
 
+        /// <inheritdoc/>
         public bool IsGeolocationAvailable
         {
             get     
@@ -32,6 +39,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public bool IsGeolocationEnabled
         {
             get
@@ -49,6 +57,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public double DesiredAccuracy
         {
             get
@@ -61,6 +70,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public bool SupportsHeading
         {
             get
@@ -69,6 +79,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public bool IsListening
         {
             get
@@ -77,6 +88,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
+        /// <inheritdoc/>
         public Task<Position> GetPositionAsync(int timeout = Timeout.Infinite, CancellationToken? cancelToken = null, bool includeHeading = false)
         {
             this.tracer.Debug("GetPositionAsync with timeout={0}, includeHeading={1}", timeout, includeHeading);
@@ -102,6 +114,7 @@ namespace CrossPlatformLibrary.Geolocation
             return singlePositionListenerTask;
         }
 
+        /// <inheritdoc/>
         public void StartListening(int minTime, double minDistance, bool includeHeading = false)
         {
             if (minTime < 0)
@@ -124,6 +137,7 @@ namespace CrossPlatformLibrary.Geolocation
             this.watcher.Start();
         }
 
+        /// <inheritdoc/>
         public void StopListening()
         {
             if (this.watcher == null)
@@ -137,10 +151,6 @@ namespace CrossPlatformLibrary.Geolocation
             this.watcher.Dispose();
             this.watcher = null;
         }
-
-        private GeoCoordinateWatcher watcher;
-        private bool isEnabled;
-        private double desiredAccuracy = 50;
 
         private static bool GetEnabled()
         {

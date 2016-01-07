@@ -1,3 +1,4 @@
+using CrossPlatformLibrary.Geolocation.Exceptions;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,20 +11,48 @@ namespace CrossPlatformLibrary.Geolocation
 
         event EventHandler<PositionEventArgs> PositionChanged;
 
+        /// <summary>
+        /// Desired accuracy in meteres.
+        /// The better accuracy (=the lower values), the longer it takes until the GPS sensor returns a position.
+        /// </summary>
         double DesiredAccuracy { get; set; }
 
         bool IsListening { get; }
 
         bool SupportsHeading { get; }
 
+        /// <summary>
+        /// Indicates if the geolocation service is available on this device.
+        /// </summary>
         bool IsGeolocationAvailable { get; }
 
+        /// <summary>
+        /// Indicates if the geolocation service is enabled on this device.
+        /// </summary>
         bool IsGeolocationEnabled { get; }
 
-        Task<Position> GetPositionAsync(int timeout = Timeout.Infinite, CancellationToken? token = null, bool includeHeading = false);
+        /// <summary>
+        /// Gets position async with specified parameters
+        /// </summary>
+        /// <param name="timeoutMilliseconds">Timeout in milliseconds to wait, Default Infinite</param>
+        /// <param name="token">Cancelation token</param>
+        /// <param name="includeHeading">If you would like to include heading</param>
+        /// <returns>Position</returns>
+        /// <exception cref="TaskCanceledException"></exception>
+        /// <exception cref="GeolocationException"></exception>
+        Task<Position> GetPositionAsync(int timeoutMilliseconds = Timeout.Infinite, CancellationToken? token = null, bool includeHeading = false);
 
+        /// <summary>
+        /// Starts listening for GPS position updates.
+        /// </summary>
+        /// <param name="minTime"></param>
+        /// <param name="minDistance"></param>
+        /// <param name="includeHeading"></param>
         void StartListening(int minTime, double minDistance, bool includeHeading = false);
 
+        /// <summary>
+        /// Stops listening for GPS position updates.
+        /// </summary>
         void StopListening();
     }
 }
