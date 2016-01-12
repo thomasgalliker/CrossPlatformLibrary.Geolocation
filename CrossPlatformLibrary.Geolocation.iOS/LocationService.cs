@@ -28,7 +28,7 @@ namespace CrossPlatformLibrary.Geolocation
 
         public LocationService(ITracer tracer)
         {
-            this.DesiredAccuracy = 50;
+            this.DesiredAccuracy = 100;
             Guard.ArgumentNotNull(() => tracer);
 
             this.tracer = tracer;

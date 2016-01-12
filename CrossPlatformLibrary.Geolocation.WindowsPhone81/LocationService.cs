@@ -11,7 +11,7 @@ namespace CrossPlatformLibrary.Geolocation
     {
         public LocationService()
         {
-            this.DesiredAccuracy = 50;
+            this.DesiredAccuracy = 100;
         }
 
         /// <inheritdoc />

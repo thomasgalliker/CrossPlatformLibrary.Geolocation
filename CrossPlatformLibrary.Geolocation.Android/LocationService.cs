@@ -28,7 +28,8 @@ namespace CrossPlatformLibrary.Geolocation
 
         public LocationService(ITracer tracer)
         {
-            this.DesiredAccuracy = 50;
+            this.DesiredAccuracy = 100;
+
             Guard.ArgumentNotNull(() => tracer);
 
             this.tracer = tracer;
@@ -60,26 +61,6 @@ namespace CrossPlatformLibrary.Geolocation
             get
             {
                 return false;
-                //				if (this.headingProvider == null || !this.manager.IsProviderEnabled (this.headingProvider))
-                //				{
-                //					Criteria c = new Criteria { BearingRequired = true };
-                //					string providerName = this.manager.GetBestProvider (c, enabledOnly: false);
-                //
-                //					LocationProvider provider = this.manager.GetProvider (providerName);
-                //
-                //					if (provider.SupportsBearing())
-                //					{
-                //						this.headingProvider = providerName;
-                //						return true;
-                //					}
-                //					else
-                //					{
-                //						this.headingProvider = null;
-                //						return false;
-                //					}
-                //				}
-                //				else
-                //					return true;
             }
         }
 
@@ -114,14 +95,12 @@ namespace CrossPlatformLibrary.Geolocation
 
             if (!this.CheckPermission("android.permission.ACCESS_COARSE_LOCATION"))
             {
-                Console.WriteLine("Unable to get location, ACCESS_COARSE_LOCATION not set.");
-                return null;
+                throw new GeolocationUnauthorizedException("Unable to get location, ACCESS_COARSE_LOCATION not set.");
             }
 
             if (!this.CheckPermission("android.permission.ACCESS_FINE_LOCATION"))
             {
-                Console.WriteLine("Unable to get location, ACCESS_FINE_LOCATION not set.");
-                return null;
+                throw new GeolocationUnauthorizedException("Unable to get location, ACCESS_FINE_LOCATION not set.");
             }
 
             if (timeoutMilliseconds <= 0 && timeoutMilliseconds != Timeout.Infinite)
