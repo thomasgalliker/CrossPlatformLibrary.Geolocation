@@ -8,6 +8,7 @@ namespace CrossPlatformLibrary.Geolocation
         public void Initialize(ISimpleIoc container)
         {
             container.RegisterWithConvention<ILocationService>();
+            container.RegisterWithConvention<ILocationServiceSettings>();
         }
     }
 }

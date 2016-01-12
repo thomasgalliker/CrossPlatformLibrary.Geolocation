@@ -85,6 +85,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="LocationService.cs" />
+    <Compile Include="LocationServiceSettings.cs" />
     <Compile Include="PositionExtensions.cs" />
     <Compile Include="PositionToGeoCoordinateConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

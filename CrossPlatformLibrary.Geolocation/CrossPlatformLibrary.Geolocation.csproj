@@ -43,6 +43,7 @@
     <Compile Include="Exceptions\GeolocationUnauthorizedException.cs" />
     <Compile Include="IClusteredGeoObject.cs" />
     <Compile Include="ILocationService.cs" />
+    <Compile Include="ILocationServiceSettings.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="PositionErrorEventArgs.cs" />
     <Compile Include="PositionEventArgs.cs" />

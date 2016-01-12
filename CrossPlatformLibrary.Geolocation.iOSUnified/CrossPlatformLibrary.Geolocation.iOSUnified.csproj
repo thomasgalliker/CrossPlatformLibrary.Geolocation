@@ -46,6 +46,9 @@
     <Compile Include="..\CrossPlatformLibrary.Geolocation.iOS\LocationService.cs">
       <Link>LocationService.cs</Link>
     </Compile>
+    <Compile Include="..\CrossPlatformLibrary.Geolocation.iOS\LocationServiceSettings.cs">
+      <Link>LocationServiceSettings.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

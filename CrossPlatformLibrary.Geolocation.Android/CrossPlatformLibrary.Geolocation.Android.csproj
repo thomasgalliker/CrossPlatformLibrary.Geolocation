@@ -69,6 +69,7 @@
     <Compile Include="GeolocationContinuousListener.cs" />
     <Compile Include="GeolocationSingleListener.cs" />
     <Compile Include="LocationService.cs" />
+    <Compile Include="LocationServiceSettings.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

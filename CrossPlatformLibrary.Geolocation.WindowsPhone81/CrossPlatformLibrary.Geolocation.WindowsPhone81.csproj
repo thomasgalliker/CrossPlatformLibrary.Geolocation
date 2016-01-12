@@ -80,6 +80,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\LocationServiceSettings.cs">
+      <Link>LocationServiceSettings.cs</Link>
+    </Compile>
     <Compile Include="LocationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Timeout.cs" />

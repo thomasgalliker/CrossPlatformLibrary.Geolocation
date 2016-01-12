@@ -11,6 +11,11 @@ namespace CrossPlatformLibrary.Geolocation.Exceptions
         {
         }
 
+        public GeolocationUnauthorizedException(string message)
+           : base(ErrorMessage + " " + message)
+        {
+        }
+
         public GeolocationUnauthorizedException(Exception innerException)
             : base(ErrorMessage, innerException)
         {

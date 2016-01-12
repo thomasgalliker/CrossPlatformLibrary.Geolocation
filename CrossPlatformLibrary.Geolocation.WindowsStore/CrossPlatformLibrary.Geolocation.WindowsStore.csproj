@@ -108,6 +108,9 @@
     <Compile Include="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Timeout.cs">
       <Link>Timeout.cs</Link>
     </Compile>
+    <Compile Include="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\LocationServiceSettings.cs">
+      <Link>LocationServiceSettings.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
