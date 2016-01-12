@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrossPlatformLibrary.Geolocation\CrossPlatformLibrary.Geolocation.csproj">
