@@ -8,13 +8,13 @@ namespace CrossPlatformLibrary.Geolocation
 {
     public class PositionErrorEventArgs : EventArgs
     {
-        public PositionErrorEventArgs(GeolocationError error)
+        public PositionErrorEventArgs(GeolocationException geolocationException)
         {
-            Guard.ArgumentNotNull(error, "error");
+            Guard.ArgumentNotNull(geolocationException, "geolocationException");
 
-            this.Error = error;
+            this.GeolocationException = geolocationException;
         }
 
-        public GeolocationError Error { get; private set; }
+        public GeolocationException GeolocationException { get; private set; }
     }
 }

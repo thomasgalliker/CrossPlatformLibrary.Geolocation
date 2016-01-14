@@ -37,7 +37,6 @@
   <ItemGroup>
     <Compile Include="ContainerExtension.cs" />
     <Compile Include="DistanceUnit.cs" />
-    <Compile Include="Exceptions\GeolocationError.cs" />
     <Compile Include="Exceptions\GeolocationException.cs" />
     <Compile Include="Exceptions\GeolocationPositionUnavailableException.cs" />
     <Compile Include="Exceptions\GeolocationUnauthorizedException.cs" />

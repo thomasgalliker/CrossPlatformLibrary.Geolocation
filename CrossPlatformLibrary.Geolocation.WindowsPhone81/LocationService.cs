@@ -169,15 +169,15 @@ namespace CrossPlatformLibrary.Geolocation
 
         private void OnLocatorStatusChanged(Geolocator sender, StatusChangedEventArgs e)
         {
-            GeolocationError error;
+            GeolocationException geolocationException;
             switch (e.Status)
             {
                 case PositionStatus.Disabled:
-                    error = GeolocationError.Unauthorized;
+                    geolocationException = new GeolocationUnauthorizedException();
                     break;
 
                 case PositionStatus.NoData:
-                    error = GeolocationError.PositionUnavailable;
+                    geolocationException = new GeolocationPositionUnavailableException();
                     break;
 
                 default:
@@ -187,7 +187,7 @@ namespace CrossPlatformLibrary.Geolocation
             if (this.IsListening)
             {
                 this.StopListening();
-                this.OnPositionError(new PositionErrorEventArgs(error));
+                this.OnPositionError(new PositionErrorEventArgs(geolocationException));
             }
 
             this.locator = null;

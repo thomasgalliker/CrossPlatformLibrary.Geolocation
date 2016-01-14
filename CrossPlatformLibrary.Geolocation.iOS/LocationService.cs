@@ -145,19 +145,7 @@ namespace CrossPlatformLibrary.Geolocation
                 EventHandler<PositionErrorEventArgs> gotError = null;
                 gotError = (s, e) =>
                     {
-                        if (e.Error == GeolocationError.Unauthorized)
-                        {
-                            tcs.TrySetException(new GeolocationUnauthorizedException());
-                        }
-                        else if (e.Error == GeolocationError.PositionUnavailable)
-                        {
-                            tcs.TrySetException(new GeolocationPositionUnavailableException());
-                        }
-                        else
-                        {
-                            tcs.TrySetException(new Exception(string.Format("Unknown PositionErrorEventArgs: {0}", e.Error)));
-                        }
-
+                        tcs.TrySetException(e.GeolocationException);
                         this.PositionError -= gotError;
                     };
 
@@ -297,7 +285,7 @@ namespace CrossPlatformLibrary.Geolocation
         {
             if ((CLError)(int)e.Error.Code == CLError.Network)
             {
-                this.OnPositionError(new PositionErrorEventArgs(GeolocationError.PositionUnavailable));
+                this.OnPositionError(new PositionErrorEventArgs(new GeolocationPositionUnavailableException()));
             }
         }
 
@@ -305,7 +293,7 @@ namespace CrossPlatformLibrary.Geolocation
         {
             if (e.Status == CLAuthorizationStatus.Denied || e.Status == CLAuthorizationStatus.Restricted)
             {
-                this.OnPositionError(new PositionErrorEventArgs(GeolocationError.Unauthorized));
+                this.OnPositionError(new PositionErrorEventArgs(new GeolocationUnauthorizedException()));
             }
         }
 

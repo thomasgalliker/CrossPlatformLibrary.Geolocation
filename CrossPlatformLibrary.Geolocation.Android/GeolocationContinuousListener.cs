@@ -97,7 +97,7 @@ namespace CrossPlatformLibrary.Geolocation
             {
                 if (this.activeProviders.Remove(provider) && this.activeProviders.Count == 0)
                 {
-                    this.OnPositionError(new PositionErrorEventArgs(GeolocationError.PositionUnavailable));
+                    this.OnPositionError(new PositionErrorEventArgs(new GeolocationPositionUnavailableException()));
                 }
             }
         }

@@ -177,15 +177,15 @@ namespace CrossPlatformLibrary.Geolocation
         {
             this.isEnabled = (this.watcher.Permission == GeoPositionPermission.Granted && this.watcher.Status != GeoPositionStatus.Disabled);
 
-            GeolocationError error;
+            GeolocationException geolocationException;
             switch (e.Status)
             {
                 case GeoPositionStatus.Disabled:
-                    error = GeolocationError.Unauthorized;
+                    geolocationException = new GeolocationUnauthorizedException();
                     break;
 
                 case GeoPositionStatus.NoData:
-                    error = GeolocationError.PositionUnavailable;
+                    geolocationException = new GeolocationPositionUnavailableException();
                     break;
 
                 default:
@@ -197,7 +197,7 @@ namespace CrossPlatformLibrary.Geolocation
             var perror = this.PositionError;
             if (perror != null)
             {
-                perror(this, new PositionErrorEventArgs(error));
+                perror(this, new PositionErrorEventArgs(geolocationException));
             }
         }
 
