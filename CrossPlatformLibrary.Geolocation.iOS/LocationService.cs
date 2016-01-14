@@ -1,10 +1,11 @@
-using CrossPlatformLibrary.Tracing;
+using CrossPlatformLibrary.Geolocation.Extensions;
 
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 using CrossPlatformLibrary.Geolocation.Exceptions;
+using CrossPlatformLibrary.Tracing;
 
 using Guards;
 #if __UNIFIED__
@@ -15,6 +16,7 @@ using UIKit;
 using MonoTouch.CoreLocation;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+
 #endif
 
 namespace CrossPlatformLibrary.Geolocation
@@ -33,7 +35,7 @@ namespace CrossPlatformLibrary.Geolocation
 
             this.tracer = tracer;
 
-            this.manager = this.GetManager();
+            this.manager = GetLocationManager();
             this.manager.AuthorizationChanged += this.OnAuthorizationChanged;
             this.manager.Failed += this.OnFailed;
 
@@ -47,37 +49,22 @@ namespace CrossPlatformLibrary.Geolocation
             }
 
             this.manager.UpdatedHeading += this.OnUpdatedHeading;
-            this.RequestAuthorization();
+            this.manager.RequestAuthorization();
         }
 
-        private void RequestAuthorization()
-        {
-            var info = NSBundle.MainBundle.InfoDictionary;
-
-            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-            {
-                if (info.ContainsKey(new NSString("NSLocationWhenInUseUsageDescription")))
-                    this.manager.RequestWhenInUseAuthorization();
-                else if (info.ContainsKey(new NSString("NSLocationAlwaysUsageDescription")))
-                    this.manager.RequestAlwaysAuthorization();
-                else
-                    throw new UnauthorizedAccessException("On iOS 8.0 and higher you must set either NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription in your Info.plist file to enable Authorization Requests for Location updates!");
-            }
-        }
-
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public event EventHandler<PositionErrorEventArgs> PositionError;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public event EventHandler<PositionEventArgs> PositionChanged;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public double DesiredAccuracy { get; set; }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool IsListening { get; private set; }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool SupportsHeading
         {
             get
@@ -86,7 +73,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public bool IsGeolocationAvailable
         {
             get
@@ -95,8 +82,7 @@ namespace CrossPlatformLibrary.Geolocation
             } // all iOS devices support at least wifi geolocation
         }
 
-        /// <inheritdoc/>
-        public bool IsGeolocationEnabled
+        private bool IsAuthorized
         {
             get
             {
@@ -105,16 +91,23 @@ namespace CrossPlatformLibrary.Geolocation
                 if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
                 {
                     return status == CLAuthorizationStatus.AuthorizedAlways
-                    || status == CLAuthorizationStatus.AuthorizedWhenInUse;
+                        || status == CLAuthorizationStatus.AuthorizedWhenInUse;
                 }
-                else
-                {
-                    return status == CLAuthorizationStatus.Authorized;
-                }
+
+                return status == CLAuthorizationStatus.Authorized;
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
+        public bool IsGeolocationEnabled
+        {
+            get
+            {
+                return CLLocationManager.LocationServicesEnabled && this.IsAuthorized;
+            }
+        }
+
+        /// <inheritdoc />
         public Task<Position> GetPositionAsync(int timeoutMilliseconds = Timeout.Infinite, CancellationToken? cancelToken = null, bool includeHeading = false)
         {
             this.tracer.Debug("GetPositionAsync with timeoutMilliseconds={0}, includeHeading={1}", timeoutMilliseconds, includeHeading);
@@ -130,12 +123,10 @@ namespace CrossPlatformLibrary.Geolocation
             }
             ;
 
-            TaskCompletionSource<Position> tcs;
             if (!this.IsListening)
             {
-                var m = this.GetManager();
+                var m = GetLocationManager();
 
-                tcs = new TaskCompletionSource<Position>(m);
                 var singleListener = new GeolocationSingleUpdateDelegate(m, this.DesiredAccuracy, includeHeading, timeoutMilliseconds, cancelToken.Value);
                 m.Delegate = singleListener;
 
@@ -147,51 +138,49 @@ namespace CrossPlatformLibrary.Geolocation
 
                 return singleListener.Task;
             }
+
+            var tcs = new TaskCompletionSource<Position>();
+            if (this.position == null)
+            {
+                EventHandler<PositionErrorEventArgs> gotError = null;
+                gotError = (s, e) =>
+                    {
+                        if (e.Error == GeolocationError.Unauthorized)
+                        {
+                            tcs.TrySetException(new GeolocationUnauthorizedException());
+                        }
+                        else if (e.Error == GeolocationError.PositionUnavailable)
+                        {
+                            tcs.TrySetException(new GeolocationPositionUnavailableException());
+                        }
+                        else
+                        {
+                            tcs.TrySetException(new Exception(string.Format("Unknown PositionErrorEventArgs: {0}", e.Error)));
+                        }
+
+                        this.PositionError -= gotError;
+                    };
+
+                this.PositionError += gotError;
+
+                EventHandler<PositionEventArgs> gotPosition = null;
+                gotPosition = (s, e) =>
+                    {
+                        tcs.TrySetResult(e.Position);
+                        this.PositionChanged -= gotPosition;
+                    };
+
+                this.PositionChanged += gotPosition;
+            }
             else
             {
-                tcs = new TaskCompletionSource<Position>();
-                if (this.position == null)
-                {
-                    EventHandler<PositionErrorEventArgs> gotError = null;
-                    gotError = (s, e) =>
-                        {
-                            if (e.Error == GeolocationError.Unauthorized)
-                            {
-                                tcs.TrySetException(new GeolocationUnauthorizedException());
-                            }
-                            else if (e.Error == GeolocationError.PositionUnavailable)
-                            {
-                                tcs.TrySetException(new GeolocationPositionUnavailableException());
-                            }
-                            else
-                            {
-                                tcs.TrySetException(new Exception(string.Format("Unknown PositionErrorEventArgs: {0}", e.Error)));
-                            }
-
-                            this.PositionError -= gotError;
-                        };
-
-                    this.PositionError += gotError;
-
-                    EventHandler<PositionEventArgs> gotPosition = null;
-                    gotPosition = (s, e) =>
-                        {
-                            tcs.TrySetResult(e.Position);
-                            this.PositionChanged -= gotPosition;
-                        };
-
-                    this.PositionChanged += gotPosition;
-                }
-                else
-                {
-                    tcs.SetResult(this.position);
-                }
+                tcs.SetResult(this.position);
             }
 
             return tcs.Task;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void StartListening(int minTime, double minDistance, bool includeHeading = false)
         {
             if (minTime < 0)
@@ -218,7 +207,7 @@ namespace CrossPlatformLibrary.Geolocation
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void StopListening()
         {
             if (!this.IsListening)
@@ -236,7 +225,7 @@ namespace CrossPlatformLibrary.Geolocation
             this.position = null;
         }
 
-        private CLLocationManager GetManager()
+        internal static CLLocationManager GetLocationManager()
         {
             CLLocationManager m = null;
             new NSObject().InvokeOnMainThread(() => m = new CLLocationManager());

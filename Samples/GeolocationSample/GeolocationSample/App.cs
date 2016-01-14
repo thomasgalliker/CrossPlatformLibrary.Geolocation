@@ -1,7 +1,6 @@
 ﻿using System;
 
 using CrossPlatformLibrary.Bootstrapping;
-using CrossPlatformLibrary.ExceptionHandling;
 
 using Xamarin.Forms;
 
@@ -14,13 +13,13 @@ namespace GeolocationSample
         public App()
         {
             this.bootstrapper = new Bootstrapper();
+            this.bootstrapper.Startup();
 
-            this.MainPage = new DemoPage();
+            this.MainPage = new NavigationPage(new DemoPage());
         }
 
         protected override void OnStart()
         {
-            this.bootstrapper.Startup();
         }
 
         protected override void OnSleep()

@@ -18,7 +18,6 @@ namespace CrossPlatformLibrary.Geolocation
             var intent = new Intent(Settings.ActionLocationSourceSettings);
             intent.AddFlags(ActivityFlags.NewTask);
             this.context.StartActivity(intent);
-            
         }
     }
 }
