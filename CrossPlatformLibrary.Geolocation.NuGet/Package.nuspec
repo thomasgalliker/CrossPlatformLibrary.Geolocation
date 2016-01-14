@@ -16,6 +16,9 @@
       windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch mvvmcross mvvmlight
     </tags>
     <releaseNotes>
+      - Default DesiredAccuracy changed from 50 to 100m
+      - Added ILocationServiceSettings to navigate to GPS settings
+      - Performance improvement due to non-expression-based Guards
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>

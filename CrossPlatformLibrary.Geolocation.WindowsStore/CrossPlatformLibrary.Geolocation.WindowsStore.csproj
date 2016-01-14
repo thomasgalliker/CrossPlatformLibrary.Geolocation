@@ -120,12 +120,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="CrossPlatformLibrary">
-      <HintPath>..\packages\CrossPlatformLibrary.1.0.71\lib\win81\CrossPlatformLibrary.dll</HintPath>
+    <Reference Include="CrossPlatformLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.72-pre3\lib\win81\CrossPlatformLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CrossPlatformLibrary.Platform">
-      <HintPath>..\packages\CrossPlatformLibrary.1.0.71\lib\win81\CrossPlatformLibrary.Platform.dll</HintPath>
+    <Reference Include="CrossPlatformLibrary.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrossPlatformLibrary.1.0.72-pre3\lib\win81\CrossPlatformLibrary.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Guards, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac6aedb73a72f46e, processorArchitecture=MSIL">

@@ -1,5 +1,8 @@
+using System;
+
 namespace CrossPlatformLibrary.Geolocation.Exceptions
 {
+    [Obsolete]
     public enum GeolocationError
     {
         /// <summary>

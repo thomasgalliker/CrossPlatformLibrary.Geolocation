@@ -168,15 +168,15 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CrossPlatformLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CrossPlatformLibrary.1.0.71\lib\wp8\CrossPlatformLibrary.dll</HintPath>
+      <HintPath>..\..\..\packages\CrossPlatformLibrary.1.0.72-pre3\lib\wp8\CrossPlatformLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="CrossPlatformLibrary.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CrossPlatformLibrary.1.0.71\lib\wp8\CrossPlatformLibrary.Platform.dll</HintPath>
+      <HintPath>..\..\..\packages\CrossPlatformLibrary.1.0.72-pre3\lib\wp8\CrossPlatformLibrary.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Guards, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac6aedb73a72f46e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Guards.1.0.8\lib\wp8\Guards.dll</HintPath>
+      <HintPath>..\..\..\packages\Guards.1.0.10\lib\wp8\Guards.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
