@@ -15,7 +15,7 @@ namespace CrossPlatformLibrary.Geolocation
         private readonly ITracer tracer;
         private GeoCoordinateWatcher watcher;
         private bool isEnabled;
-        private double desiredAccuracy = 50;
+        private double desiredAccuracy = 100;
 
         /// <inheritdoc/>
         public event EventHandler<PositionErrorEventArgs> PositionError;
