@@ -43,6 +43,8 @@
     <Compile Include="IClusteredGeoObject.cs" />
     <Compile Include="ILocationService.cs" />
     <Compile Include="ILocationServiceSettings.cs" />
+    <Compile Include="LocationItemFilter.cs" />
+    <Compile Include="LocationRect.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="PositionErrorEventArgs.cs" />
     <Compile Include="PositionEventArgs.cs" />
