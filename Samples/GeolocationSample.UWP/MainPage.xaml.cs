@@ -1,13 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 using Windows.Data.Xml.Dom;
-using Windows.UI.Core;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
+using CrossPlatformLibrary.Dispatching;
 using CrossPlatformLibrary.Geolocation;
 using CrossPlatformLibrary.IoC;
 using CrossPlatformLibrary.Tracing;
@@ -15,47 +14,37 @@ using CrossPlatformLibrary.Tracing;
 namespace GeolocationSample.UWP
 {
     /// <summary>
-    /// Example code for the usage of ILocationService in an UWP app.
-    /// Original UWP source code: https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Geolocation/cs/GeolocationCS
+    ///     Example code for the usage of ILocationService in an UWP app.
+    ///     Original UWP source code:
+    ///     https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Geolocation/cs/GeolocationCS
     /// </summary>
     public sealed partial class MainPage : Page
     {
         private readonly ILocationService locationService;
+        private readonly IDispatcherService dispatcherService;
         private readonly ITracer tracer;
-
+   
         public MainPage()
         {
             this.InitializeComponent();
+
             this.locationService = SimpleIoc.Default.GetInstance<ILocationService>();
+            this.dispatcherService = SimpleIoc.Default.GetInstance<IDispatcherService>();
             this.tracer = Tracer.Create(this);
         }
 
-        /// <summary>
-        ///     Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">
-        ///     Event data that describes how this page was reached. The Parameter
-        ///     property is typically used to configure the page.
-        /// </param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.StartTrackingButton.IsEnabled = true;
             this.StopTrackingButton.IsEnabled = false;
         }
 
-        /// <summary>
-        ///     Invoked immediately before the Page is unloaded and is no longer the current source of a parent Frame.
-        /// </summary>
-        /// <param name="e">
-        ///     Event data that can be examined by overriding code. The event data is representative
-        ///     of the navigation that will unload the current Page unless canceled. The
-        ///     navigation can potentially be canceled by setting e.Cancel to true.
-        /// </param>
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             if (this.StopTrackingButton.IsEnabled)
             {
                 this.locationService.PositionChanged -= this.OnPositionChanged;
+                this.locationService.PositionError -= this.OnPositionError;
             }
 
             base.OnNavigatingFrom(e);
@@ -90,16 +79,8 @@ namespace GeolocationSample.UWP
         private void OnPositionError(object sender, PositionErrorEventArgs e)
         {
             // template to load for showing Toast Notification
-            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
-                                     "<visual>" +
-                                       "<binding template =\"ToastGeneric\">" +
-                                         "<text>OnPositionError</text>" +
-                                         "<text>" +
-                                           "A position error has occurred: " + e.GeolocationException.Message +
-                                         "</text>" +
-                                       "</binding>" +
-                                     "</visual>" +
-                                   "</toast>";
+            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" + "<visual>" + "<binding template =\"ToastGeneric\">" + "<text>OnPositionError</text>" + "<text>"
+                                   + "A position error has occurred: " + e.GeolocationException.Message + "</text>" + "</binding>" + "</visual>" + "</toast>";
 
             // load the template as XML document
             var xmlDocument = new XmlDocument();
@@ -131,10 +112,9 @@ namespace GeolocationSample.UWP
         /// </summary>
         /// <param name="sender">Geolocator instance</param>
         /// <param name="e">Position data</param>
-        private async void OnPositionChanged(object sender, PositionEventArgs e)
+        private void OnPositionChanged(object sender, PositionEventArgs e)
         {
-            await this.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,
+            this.dispatcherService.CheckBeginInvokeOnUI(
                 () =>
                     {
                         this.tracer.Info("Location updated.");
