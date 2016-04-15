@@ -1,9 +1,11 @@
-﻿using CrossPlatformLibrary.Geolocation.Exceptions;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+
+using CrossPlatformLibrary.Geolocation.Exceptions;
 
 namespace CrossPlatformLibrary.Geolocation
 {
@@ -238,12 +240,12 @@ namespace CrossPlatformLibrary.Geolocation
         private static Position GetPosition(Geoposition position)
         {
             var pos = new Position
-            {
-                Accuracy = position.Coordinate.Accuracy,
-                Latitude = position.Coordinate.Point.Position.Latitude,
-                Longitude = position.Coordinate.Point.Position.Longitude,
-                Timestamp = position.Coordinate.Timestamp.ToUniversalTime(),
-            };
+                          {
+                              Accuracy = position.Coordinate.Accuracy,
+                              Latitude = position.Coordinate.Point.Position.Latitude,
+                              Longitude = position.Coordinate.Point.Position.Longitude,
+                              Timestamp = position.Coordinate.Timestamp.ToUniversalTime(),
+                          };
 
             if (position.Coordinate.Heading != null)
             {

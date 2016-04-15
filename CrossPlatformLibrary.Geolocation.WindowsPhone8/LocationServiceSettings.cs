@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Windows.System;
 
 namespace CrossPlatformLibrary.Geolocation
 {
@@ -10,7 +8,7 @@ namespace CrossPlatformLibrary.Geolocation
     {
         public void Show()
         {
-           Windows.System.Launcher.LaunchUriAsync(new System.Uri("ms-settings-location:"));
+            Launcher.LaunchUriAsync(new Uri("ms-settings-location:"));
         }
     }
 }
