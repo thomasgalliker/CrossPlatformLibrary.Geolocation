@@ -1,0 +1,10 @@
+﻿<Application
+    x:Class="GeolocationSample.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <Style x:Key="BasicTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}" />
+    </Application.Resources>
+</Application>

@@ -46,8 +46,8 @@ namespace CrossPlatformLibrary.Geolocation
         /// <summary>
         /// Starts listening for GPS position updates.
         /// </summary>
-        /// <param name="minTime"></param>
-        /// <param name="minDistance"></param>
+        /// <param name="minTime">The requested minimum time interval between location updates, in milliseconds. If your application requires updates infrequently, set this value so that location services can conserve power by calculating location only when needed.</param>
+        /// <param name="minDistance">Gets and sets the distance of movement, in meters, relative to the coordinate from the last PositionChanged event, that is required for the location service to raise a PositionChanged event.</param>
         /// <param name="includeHeading"></param>
         void StartListening(int minTime, double minDistance, bool includeHeading = false);
 
