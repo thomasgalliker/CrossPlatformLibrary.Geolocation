@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>CrossPlatformLibrary.Geolocation</id>
-    <version>1.0.24</version>
+    <version>1.0.25</version>
     <title>CrossPlatformLibrary.Geolocation</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -13,21 +13,24 @@
     <description>CrossPlatformLibrary.Geolocation is a plug-in for geo information handling. It enables cross-platform GPS functionality.</description>
     <tags>
       xamarin pcl CrossPlatformLibrary CrossPlatformLibrary.Geolocation plugin for Geolocation gps geolocator ILocationService location position GeoCoordinateWatcher CLLocationManager LocationManager
-      windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch mvvmcross mvvmlight
+      windows phone winphone wp8 wpa81 win81 windowsphone universal uwp uap android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      1.0.25
+      - Support for Universal Windows Platform (UWP).
+
       1.0.24
       - Default DesiredAccuracy changed from 50 to 100m
       - Added ILocationServiceSettings to navigate to GPS settings
       - Performance improvement due to non-expression-based Guards
       - New data type LocationRect to represent location areas
-      
+
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>
     <dependencies>
       <group>
-        <dependency id="CrossPlatformLibrary" version="1.0.71" />
+        <dependency id="CrossPlatformLibrary" version="1.0.73" />
       </group>
     </dependencies>
   </metadata>
@@ -84,6 +87,14 @@
     <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\win81\CrossPlatformLibrary.Geolocation.dll" />
     <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\win81\CrossPlatformLibrary.Geolocation.pdb" />
     <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\win81\CrossPlatformLibrary.Geolocation.xml" />
+
+    <!--Universal Windows Platform-->
+    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.Platform.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.Platform.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.Platform.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.xml" />
 
     <file src="tools\init.ps1" target="tools\init.ps1" />
     <file src="tools\install.ps1" target="tools\install.ps1" />
