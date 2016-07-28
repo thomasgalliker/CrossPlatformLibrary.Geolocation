@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>CrossPlatformLibrary.Geolocation</id>
-    <version>1.0.25</version>
+    <version>1.0.26-pre1</version>
     <title>CrossPlatformLibrary.Geolocation</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -16,6 +16,9 @@
       windows phone winphone wp8 wpa81 win81 windowsphone universal uwp uap android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      1.0.26-pre
+      - Update to CrossPlatformLibrary 1.0.73
+      
       1.0.25
       - Support for Universal Windows Platform (UWP).
 
@@ -31,6 +34,7 @@
     <dependencies>
       <group>
         <dependency id="CrossPlatformLibrary" version="1.0.73" />
+        <dependency id="Guards" version="1.0.11" />
       </group>
     </dependencies>
   </metadata>
