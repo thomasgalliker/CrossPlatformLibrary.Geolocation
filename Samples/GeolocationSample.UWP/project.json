@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
-    "CrossPlatformLibrary": "1.0.73",
+    "CrossPlatformLibrary": "2.0.0-pre7",
+    "CrossPlatformLibrary.Geolocation": "2.0.0-pre5",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
   },
   "frameworks": {

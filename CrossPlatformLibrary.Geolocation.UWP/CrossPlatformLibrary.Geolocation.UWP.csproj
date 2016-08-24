@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CrossPlatformLibrary.Geolocation</RootNamespace>
-    <AssemblyName>CrossPlatformLibrary.Geolocation.Platform</AssemblyName>
+    <AssemblyName>CrossPlatformLibrary.Geolocation</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
@@ -35,7 +35,7 @@
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\CrossPlatformLibrary.Geolocation.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -108,24 +108,14 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\LocationService.cs">
-      <Link>LocationService.cs</Link>
-    </Compile>
-    <Compile Include="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Timeout.cs">
-      <Link>Timeout.cs</Link>
-    </Compile>
     <Compile Include="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\LocationServiceSettings.cs">
       <Link>LocationServiceSettings.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\CrossPlatformLibrary.Geolocation.UWP.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CrossPlatformLibrary.Geolocation\CrossPlatformLibrary.Geolocation.csproj">
-      <Project>{a6fcef44-d2ba-42c7-b3cb-13667bcd7b54}</Project>
-      <Name>CrossPlatformLibrary.Geolocation</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Import Project="..\CrossPlatformLibrary.Geolocation.Shared\CrossPlatformLibrary.Geolocation.Shared.projitems" Label="Shared" />
+  <Import Project="..\CrossPlatformLibrary.Geolocation.Shared.WinRT\CrossPlatformLibrary.Geolocation.Shared.WinRT.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

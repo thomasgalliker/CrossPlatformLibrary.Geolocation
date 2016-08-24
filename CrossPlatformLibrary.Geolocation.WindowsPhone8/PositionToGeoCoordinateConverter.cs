@@ -3,6 +3,8 @@ using System.Device.Location;
 using System.Globalization;
 using System.Windows.Data;
 
+using CrossPlatformLibrary.Geolocation.WinRT;
+
 namespace CrossPlatformLibrary.Geolocation
 {
     public class PositionToGeoCoordinateConverter : IValueConverter

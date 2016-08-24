@@ -1,7 +1,6 @@
 ﻿{
   "dependencies": {
-    "CrossPlatformAdapter": "1.0.12",
-    "CrossPlatformLibrary": "1.0.73",
+    "CrossPlatformLibrary": "2.0.0-pre7",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
   },
   "frameworks": {

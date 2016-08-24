@@ -2,7 +2,7 @@
 
 using Guards;
 
-namespace CrossPlatformLibrary.Geolocation
+namespace CrossPlatformLibrary.Geolocation.WinRT
 {
     public static class PositionExtensions
     {

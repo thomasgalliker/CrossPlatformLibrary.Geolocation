@@ -4,9 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using CrossPlatformLibrary.Geolocation.Exceptions;
-using CrossPlatformLibrary.Tracing;
 
 using Guards;
+
+using Tracing;
 
 namespace CrossPlatformLibrary.Geolocation
 {

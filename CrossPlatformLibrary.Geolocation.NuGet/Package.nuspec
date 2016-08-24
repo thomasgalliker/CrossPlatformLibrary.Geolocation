@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>CrossPlatformLibrary.Geolocation</id>
-    <version>1.0.26-pre1</version>
+    <version>2.0.0-pre7</version>
     <title>CrossPlatformLibrary.Geolocation</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -16,9 +16,12 @@
       windows phone winphone wp8 wpa81 win81 windowsphone universal uwp uap android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      2.0.0-prerelease
+      - Refactored to bait-and-switch pattern
+
       1.0.26-pre
       - Update to CrossPlatformLibrary 1.0.73
-      
+
       1.0.25
       - Support for Universal Windows Platform (UWP).
 
@@ -32,73 +35,52 @@
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>
     <dependencies>
-      <group>
-        <dependency id="CrossPlatformLibrary" version="1.0.73" />
+     <group>
+        <dependency id="CrossPlatformLibrary" version="[1.9.99, 2.0.0)" />
         <dependency id="Guards" version="1.0.11" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <!--PCL-->
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\portable-net45+wp8+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\portable-net45+wp8+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\portable-net45+wp8+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Xamarin.Android-->
-    <file src="..\CrossPlatformLibrary.Geolocation.Android\bin\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.Android\bin\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.Android\bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.Android\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.Android\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.Android\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\monoandroid10\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Xamarin.iOS Classic API-->
-    <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOS\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\monotouch10\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Xamarin.iOS Unified API-->
-    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.iOSUnified\bin\iPhone\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\xamarin.ios10\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Windows Phone 8-->
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\wp8\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\wp8\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\wp8\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\wp8\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\wp8\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\wp8\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\Bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\wp8\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\Bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\wp8\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone8\Bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\wp8\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Windows Phone 8.1-->
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\wpa81\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\wpa81\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\wpa81\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\wpa81\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\wpa81\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\wpa81\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\wpa81\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\wpa81\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsPhone81\Bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\wpa81\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Windows Store-->
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsStore\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\win81\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsStore\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\win81\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.WindowsStore\Bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\win81\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\win81\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\win81\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\win81\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsStore\Bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\win81\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsStore\Bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\win81\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.WindowsStore\Bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\win81\CrossPlatformLibrary.Geolocation.xml" />
 
     <!--Universal Windows Platform-->
-    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.Platform.dll" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.Platform.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.Platform.pdb" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.Platform.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.Platform.xml" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.Platform.xml" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.dll" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.pdb" />
-    <file src="..\CrossPlatformLibrary.Geolocation\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.xml" />
+    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.dll" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.dll" />
+    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.pdb" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.pdb" />
+    <file src="..\CrossPlatformLibrary.Geolocation.UWP\bin\Release\CrossPlatformLibrary.Geolocation.xml" target="lib\uap10.0\CrossPlatformLibrary.Geolocation.xml" />
 
     <file src="tools\init.ps1" target="tools\init.ps1" />
     <file src="tools\install.ps1" target="tools\install.ps1" />

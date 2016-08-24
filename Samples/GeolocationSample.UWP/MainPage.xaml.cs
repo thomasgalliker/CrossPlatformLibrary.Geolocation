@@ -1,15 +1,13 @@
 ﻿using System.Globalization;
-
+using CrossPlatformLibrary.Dispatching;
+using CrossPlatformLibrary.Geolocation;
+using CrossPlatformLibrary.IoC;
+using Tracing;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
-using CrossPlatformLibrary.Dispatching;
-using CrossPlatformLibrary.Geolocation;
-using CrossPlatformLibrary.IoC;
-using CrossPlatformLibrary.Tracing;
 
 namespace GeolocationSample.UWP
 {

@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using CrossPlatformLibrary.Bootstrapping;
 
 using Xamarin.Forms;
@@ -15,7 +14,7 @@ namespace GeolocationSample
             this.bootstrapper = new Bootstrapper();
             this.bootstrapper.Startup();
 
-            this.MainPage = new NavigationPage(new DemoPage());
+            this.MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

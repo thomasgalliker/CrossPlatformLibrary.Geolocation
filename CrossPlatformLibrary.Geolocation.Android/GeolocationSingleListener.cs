@@ -1,10 +1,10 @@
-using Android.Locations;
-using Android.OS;
-using CrossPlatformLibrary.Geolocation.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Android.Locations;
+using Android.OS;
+using CrossPlatformLibrary.Geolocation.Exceptions;
 using Object = Java.Lang.Object;
 
 namespace CrossPlatformLibrary.Geolocation
